@@ -5,7 +5,7 @@ import numpy as np
 
 # --- CONFIGURATION ---
 script_dir = os.path.dirname(os.path.abspath(__file__))
-INPUT_IMAGE = os.path.join(script_dir, 'krishna.png')
+INPUT_IMAGE = os.path.join(script_dir,'krishna.png')
 
 # Widescreen canvas centered for monitor display
 CANVAS_W, CANVAS_H = 1920, 1080  

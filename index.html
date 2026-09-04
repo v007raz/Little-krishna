@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cute Krishna Animation</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    canvas {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 1080;
+    canvas.height = 1500;
+
+    const img = new Image();
+    img.src = 'krishna.png'; // Make sure krishna.png repository me isi path par ho
+
+    img.onload = () => {
+      let alpha = 0;
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Fade-in animation
+        if (alpha < 1) alpha += 0.01;
+        ctx.globalAlpha = alpha;
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        // Pulsing glow effect
+        ctx.shadowBlur = 20 + Math.sin(Date.now() / 200) * 10;
+        ctx.shadowColor = "#ff00ea";
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    };
+  </script>
+</body>
+</html>
